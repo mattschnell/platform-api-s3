@@ -7,7 +7,7 @@ export const createPost = (req, res) => {
   post.content = req.body.content;
   post.coverUrl = req.body.coverUrl;
   post.save().then((result) => {
-    res.json({ message: 'Post created!' });
+    res.json(result);
   })
     .catch((error) => {
       res.status(500).json({ error });
@@ -15,7 +15,7 @@ export const createPost = (req, res) => {
 };
 export const getPosts = (req, res) => {
   Post.find({}).then((result) => {
-    res.json({ message: result });
+    res.json(result);
   })
     .catch((error) => {
       res.status(500).json({ error });
@@ -24,7 +24,7 @@ export const getPosts = (req, res) => {
 
 export const getPost = (req, res) => {
   Post.findOne({ _id: req.params.id }).then((result) => {
-    res.json({ message: result });
+    res.json(result);
   })
     .catch((error) => {
       res.status(500).json({ error });
@@ -33,7 +33,7 @@ export const getPost = (req, res) => {
 
 export const deletePost = (req, res) => {
   Post.findOneAndDelete({ _id: req.params.id }).then((result) => {
-    res.json({ message: result });
+    res.json(result);
   })
     .catch((error) => {
       res.status(500).json({ error });
@@ -41,7 +41,7 @@ export const deletePost = (req, res) => {
 };
 export const updatePost = (req, res) => {
   Post.findOneAndUpdate({ _id: req.params.id }, req.body).then((result) => {
-    res.json({ message: result });
+    res.json(result);
   })
     .catch((error) => {
       res.status(500).json({ error });
