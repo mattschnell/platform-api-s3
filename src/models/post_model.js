@@ -8,6 +8,7 @@ const PostSchema = new Schema({
   coverUrl: String,
   tags: String,
   content: String,
+  datePosted: String,
 }, {
   toObject: { virtuals: true },
   toJSON: { virtuals: true },
