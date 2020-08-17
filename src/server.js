@@ -7,6 +7,7 @@ import mongoose from 'mongoose';
 import apiRouter from './router';
 
 // HdeGQ0mLFgXdVwLc
+// mongodb+srv://matt-schnell:<password>@cluster0.mo2uu.mongodb.net/<dbname>?retryWrites=true&w=majority
 
 // initialize
 const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost/platform_db';

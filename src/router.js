@@ -1,5 +1,9 @@
 import { Router } from 'express';
 import * as Posts from './controllers/post_controller';
+// our imports as usual
+import * as UserController from './controllers/user_controller';
+// eslint-disable-next-line no-unused-vars
+import { requireAuth, requireSignin } from './services/passport';
 
 const router = Router();
 
@@ -8,7 +12,7 @@ router.get('/', (req, res) => {
 });
 
 /// your routes will go here
-router.route('/posts').post((req, res) => {
+router.route('/posts').post(requireAuth, (req, res) => {
   Posts.createPost(req, res);
 });
 
@@ -20,12 +24,15 @@ router.route('/posts/:id').get((req, res) => {
   Posts.getPost(req, res);
 });
 
-router.route('/posts/:id').delete((req, res) => {
+router.route('/posts/:id').delete(requireAuth, (req, res) => {
   Posts.deletePost(req, res);
 });
 
-router.route('/posts/:id').put((req, res) => {
+router.route('/posts/:id').put(requireAuth, (req, res) => {
   Posts.updatePost(req, res);
 });
+
+router.post('/signin', requireSignin, UserController.signin);
+router.post('/signup', UserController.signup);
 
 export default router;

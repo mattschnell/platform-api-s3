@@ -7,6 +7,8 @@ export const createPost = (req, res) => {
   post.content = req.body.content;
   post.coverUrl = req.body.coverUrl;
   post.datePosted = req.body.datePosted;
+  post.author = req.user.username;
+
   post.save().then((result) => {
     res.json(result);
   })

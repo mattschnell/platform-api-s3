@@ -9,6 +9,7 @@ const PostSchema = new Schema({
   tags: String,
   content: String,
   datePosted: String,
+  author: { type: String, ref: 'User' },
 }, {
   toObject: { virtuals: true },
   toJSON: { virtuals: true },
