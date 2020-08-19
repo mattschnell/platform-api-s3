@@ -4,10 +4,13 @@ import cors from 'cors';
 import path from 'path';
 import morgan from 'morgan';
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 import apiRouter from './router';
 
 // HdeGQ0mLFgXdVwLc
 // mongodb+srv://matt-schnell:<password>@cluster0.mo2uu.mongodb.net/<dbname>?retryWrites=true&w=majority
+
+dotenv.config({ silent: true });
 
 // initialize
 const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost/platform_db';

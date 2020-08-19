@@ -4,8 +4,11 @@ import * as Posts from './controllers/post_controller';
 import * as UserController from './controllers/user_controller';
 // eslint-disable-next-line no-unused-vars
 import { requireAuth, requireSignin } from './services/passport';
+import signS3 from './services/s3';
 
 const router = Router();
+
+router.get('/sign-s3', signS3);
 
 router.get('/', (req, res) => {
   res.json({ message: 'welcome to our blog api!' });
